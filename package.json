@@ -9,14 +9,17 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json --format stylish",
     "test": "tsc && nyc mocha",
-    "build": "tsc && browserify dist/index.js --standalone slpvalidate > dist/slpvalidate.js && uglifyjs dist/slpvalidate.js --compress > dist/slpvalidate.min.js"
+    "build": "tsc && browserify dist/index.js --standalone slpvalidate > dist/slpvalidate.js && uglifyjs dist/slpvalidate.js --compress > dist/slpvalidate.min.js",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "James Cramer <jcramer@simpleledger.io>",
   "license": "ISC",
   "unpkg": "dist/slpvalidate.min.js",
   "dependencies": {
     "@types/big.js": "^4.0.5",
-    "big.js": "5.2.2"
+    "big.js": "5.2.2",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^0.1.3",
@@ -35,5 +38,6 @@
     "typescript": "^3.8.3",
     "typescript-tslint-plugin": "^0.5.5",
     "uglify-es": "^3.3.9"
-  }
+  },
+  "snyk": true
 }
